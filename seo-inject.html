@@ -1,0 +1,105 @@
+<!-- ============================================================================
+     紫微高级盘的静态 SEO 内容块。
+
+     这个页面是 vite 单页应用，HTML 外壳只有 1.2KB，爬虫与 LLM 抓取器不执行 JS，
+     它们看到的是一张白纸 —— Search Console 因此报「Google 无法识别此网址」。
+
+     光做预渲染解决不了：这页渲染出来只有 1148 字，其中大半还是年份下拉的 90 个
+     选项，属于 thin content。所以这里直接补一段真正可索引的静态内容。
+
+     放在 #root **之后**：React 只接管 #root，这个 section 不参与水合，
+     不可能造成 hydration mismatch。样式全部内联并加 zwseo- 前缀，不依赖应用 CSS，
+     也不会污染它。
+     ========================================================================= -->
+<style>
+.zwseo{max-width:760px;margin:0 auto;padding:44px 18px 64px;color:#c9d6d4;
+  font:15.5px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  border-top:1px solid rgba(216,183,115,.18)}
+.zwseo h2{font-size:19px;margin:34px 0 12px;color:#d8b773;font-weight:600;
+  border-left:3px solid #d8b773;padding-left:11px}
+.zwseo h2:first-child{margin-top:0}
+.zwseo .zwseo-h1{font-size:22px;margin:0 0 14px;color:#efd69f;font-weight:600;
+  letter-spacing:.02em}
+.zwseo p{margin:0 0 14px}
+.zwseo b{color:#efd69f;font-weight:600}
+.zwseo a{color:#efd69f}
+.zwseo table{width:100%;border-collapse:collapse;margin:0 0 18px;font-size:14px;
+  display:block;overflow-x:auto}
+.zwseo th,.zwseo td{border:1px solid rgba(216,183,115,.18);padding:9px 11px;text-align:left}
+.zwseo th{background:rgba(216,183,115,.07);color:#efd69f;font-weight:600}
+.zwseo ul{padding-left:20px;margin:0 0 14px}
+.zwseo li{margin-bottom:7px}
+.zwseo .zwseo-note{border-left:3px solid rgba(216,183,115,.18);padding:2px 0 2px 13px;
+  color:#8fa7a6;font-size:14px;margin:0 0 16px}
+.zwseo .zwseo-foot{margin-top:34px;padding-top:18px;border-top:1px solid rgba(216,183,115,.18);
+  color:#8fa7a6;font-size:13px}
+</style>
+<section class="zwseo">
+
+<!-- 这里用 h1 而不是 h2：不执行 JS 的爬虫看不到应用渲染出的那个 h1，
+     对它们来说这一段是全页唯一的标题层级。 -->
+<h1 class="zwseo-h1">紫微高级排盘</h1>
+<p>这是观星台的紫微斗数完整排盘工具，<b>免费、无需注册、不建立用户画像</b>。
+输入出生年月日时与出生地，程序按真太阳时定盘，一次给出 <b>5</b> 个模块：</p>
+
+<table>
+<tr><th>模块</th><th>做什么</th></tr>
+<tr><td>命盘解读</td><td>十二宫全部星曜、生年四化与自化，逐宫可核对</td></tr>
+<tr><td>年度运势</td><td>大限与流年分层展示，标明每一层各自在说什么</td></tr>
+<tr><td>人生K线</td><td>把各大限的起伏画成曲线，一眼看出顺逆节奏</td></tr>
+<tr><td>双人合盘</td><td>两张盘并排对照，看宫位与四化之间的牵动</td></tr>
+<tr><td>分享卡片</td><td>把盘面生成一张可保存的图片</td></tr>
+</table>
+
+<h2>和首页的基础排盘差在哪</h2>
+<p>首页的紫微排盘给的是<b>一张本命盘</b>，够用来认识自己的基本结构。
+高级盘多出来的是<b>时间维度与关系维度</b>：</p>
+
+<table>
+<tr><th>高级盘多出什么</th><th>为什么要它</th></tr>
+<tr><td>生年四化 + 自化</td><td>四化决定能量往哪流，自化决定它会不会漏掉</td></tr>
+<tr><td>大限分层</td><td>十年一个主旋律，不看大限就说不清「现在」</td></tr>
+<tr><td>流年叠加</td><td>本命、大限、流年是 3 层，混着说必然乱</td></tr>
+<tr><td>人生起伏曲线</td><td>把十年尺度的顺逆变成可对照的形状</td></tr>
+<tr><td>双人合盘</td><td>关系问题看单盘看不出来，要两张盘一起看</td></tr>
+</table>
+
+<p class="zwseo-note">如果你是第一次接触紫微斗数，建议先读
+<a href="/guides/ziwei">紫微斗数入门：从定命宫到读四化</a>，再回来排盘。
+看得懂盘面的名词，工具才有意义。</p>
+
+<h2>怎么用</h2>
+<ul>
+<li><b>出生时间尽量准到刻钟。</b>紫微以时辰定命宫，差 1 个时辰整张盘就换了。</li>
+<li><b>出生地要填准。</b>程序按经度换算真太阳时 —— 每 1 度经度约 4 分钟时差，
+中国全境跨 60 多度，钟表时间和真太阳时可能差 1 小时以上。台湾、港澳和海外华人常见城市也已收录，按当地时区与当年夏令时换算。</li>
+<li><b>1986 至 1991 年</b>出生的人要注意，这 6 年实行过夏令时，
+按钟表时间直接排盘容易错 1 个时辰。程序会自动还原。</li>
+<li>只知道大概时辰的，可以把相邻两个时辰都排一次，看哪张盘描述的模式对得上已经发生过的事。</li>
+</ul>
+
+<h2>算得准不准，你可以自己核对</h2>
+<p>盘面保留了<b>经纬度、时区与真太阳时</b>三项参数。拿这三项去和任何其他软件比对 ——
+参数一致则盘必然一致；不一致，也能立刻定位到是哪一步的差异，而不是各说各话。</p>
+<p>紫微排盘由开源程序 <b>iztro</b>（MIT 许可证）确定性计算：同样的输入必然得到同样的输出，
+盘面没有任何一处是随机生成或人工微调的。
+详见 <a href="/guides/method">观星台的排盘是怎么算的</a>。</p>
+
+<h2>关于解读</h2>
+<p>紫微斗数是一套<b>结构化的自我认识工具</b>，不是预测机器。
+它擅长描述倾向、指出模式；<b>不预测具体事件、日期、金额、疾病或生死</b>。
+任何说得斩钉截铁的断言，包括 AI 生成的，都值得怀疑。</p>
+<p>本工具的解读只引用盘中已有的事实 —— 每一句结论都应该能指回盘面上的具体结构。
+指不回去的，就是在编。</p>
+
+<div class="zwseo-foot">
+<p>紫微高级版衍生自 ziweiknows/ziwei-chart，按 GPL-3.0-or-later 分发；
+完整许可证与对应源码包随发布目录一同提供。</p>
+<p>本工具仅供传统文化研究与自我观察，不构成医疗、法律、投资或任何现实决策依据。</p>
+<p><a href="/">返回观星台首页</a> · <a href="/guides/ziwei">紫微入门</a> ·
+<a href="/guides/bazi">八字入门</a> · <a href="/guides/liuyao">六爻入门</a> ·
+<a href="/guides/qimen">奇门入门</a> · <a href="/guides/astrology">星盘入门</a> ·
+<a href="/guides/method">计算方法与精度</a></p>
+</div>
+
+</section>

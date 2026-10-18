@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <title>紫微高级排盘｜观星台</title>
+    <!-- 这里原本从 Google Fonts 拉 Noto Sans/Serif SC 和 Ma Shan Zheng。
+         两个原因去掉：fonts.googleapis.com 在中国大陆访问不到，主要用户根本等不到字体；
+         而且本站的 CSP 只允许 style-src 'self'，这个样式表在浏览器里直接被拦截，
+         每次打开都在控制台报一条错，字体一次也没真正生效过。
+         改用系统自带的中文字体（见 index.css 的 --font-* ），不联网、不阻塞渲染。 -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
